@@ -1,0 +1,39 @@
+<LinearLayout 
+   	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListItem"
+    android:orientation="vertical"
+   >	
+	
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="0px"
+	    android:layout_weight="8"
+	     >
+	
+    	    <LinearLayout android:id="@+id/layoutBtnMonsterXML"
+    	        android:layout_width="match_parent"
+	    		android:layout_height="wrap_content">
+	    		
+    		</LinearLayout>
+	    		        
+	</ScrollView>
+	
+	<LinearLayout android:layout_width="match_parent"
+	    android:layout_height="0px"
+	    android:orientation="vertical"
+	    	    
+	    android:layout_weight="1">
+	      
+	    <LinearLayout android:id="@+id/layoutBtnBackXML"
+    	        android:layout_width="match_parent"
+	    		android:layout_height="wrap_content">
+	    		
+	  	</LinearLayout>
+	    
+	    
+	</LinearLayout>
+
+</LinearLayout>

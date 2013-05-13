@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Pokepoke</string>
+    <string name="action_settings">Settings</string>    
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="title_activity_list_item">ListItem</string>
+    <string name="title_activity_list_monster">ListMonster</string>
+    <string name="title_activity_pokedex">Pokedex</string>
+    <string name="title_activity_menu_combinatorium">MenuCombinatorium</string>
+    <string name="menu_save">Save</string>
+    <string name="menu_load">Load</string>
+    <string name="button_new_game">New</string>
+    <string name="button_load">Load</string>
+    <string name="choose_player">Choose Player</string>
+    <string name="create_player">Create Player</string>
+    <string name="button_ok">OK</string>
+
+</resources>

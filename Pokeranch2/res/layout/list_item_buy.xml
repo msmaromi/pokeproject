@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <Button 
+        android:id="@+id/buyPotion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Potion"
+        android:onClick="buyPotion"/>
+    
+    <Button 
+        android:id="@+id/buyStatPermanenIncrease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stat Permanen Increase"
+        android:onClick="buyStatPermanenIncrease"/>
+    
+    <Button 
+        android:id="@+id/buyMonsterBall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Monster Ball"
+        android:onClick="buyMonsterBall"/>
+    
+    <Button 
+        android:id="@+id/buyMonsterEgg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Monster Egg"
+        android:onClick="buyMonsterEgg"/>
+
+    <Button 
+        android:id="@+id/backFromBuy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:onClick="klikBackFromBuy"/>
+    
+</LinearLayout>

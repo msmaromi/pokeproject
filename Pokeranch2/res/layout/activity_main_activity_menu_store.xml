@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivityMenuStore" 
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnBuy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"        
+        android:text="Buy" 
+        android:onClick="klikBuy"/>
+
+    <Button
+        android:id="@+id/btnSell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnBuy"        
+        android:text="Sell" 
+        android:onClick="klikSell"/>
+    
+    <Button
+        android:id="@+id/btnBackToGameFromStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnSell"
+        android:onClick="klikBackToGameFromStore"        
+        android:text="Back" />
+    
+    
+    <TextView
+        android:id="@+id/statusPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnBackToGameFromStore"
+        android:layout_centerHorizontal="true"/>
+<!--         android:text="adas" -->
+        
+        
+    
+        
+        
+</RelativeLayout>
