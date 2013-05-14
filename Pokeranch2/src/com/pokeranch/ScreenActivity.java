@@ -40,14 +40,14 @@ public class ScreenActivity extends Activity {
 		metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		Bundle extras = getIntent().getExtras();
-		Log.d("debug","masuk");
-		if(extras.getString("statusSwitch")=="load") {Log.d("debug","masuk1");				
-			player = extras.getParcelable("playerLoaded");			
-		} else if(extras.getString("statusSwitch")=="new") {Log.d("debug","masuk2");
-			player = new Player(extras.getString("newPlayerName"));
-		}	Log.d("debug","masuk3");
-		Log.d("cek nama player", player.getNama());
 		dbHandler = Cover.dbHandler;
+		if(extras.getString("statusSwitch").equals("load")) {				
+			player = dbHandler.getPlayer(dbHandler.getIDbyName(DatabaseHandler.TABLE_PLAYERS, extras.getString("loadPlayerName")));
+		} else if(extras.getString("statusSwitch").equals("new")) {
+			player = new Player(extras.getString("newPlayerName"));
+		}
+		Log.d("cek nama player", player.getNama());
+		
 		setMap(new CityScreenView(this, metrics.widthPixels, metrics.heightPixels, player));
 	}
 	
