@@ -99,6 +99,7 @@ public class Cover extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String name = newPlayerTextField.getText().toString();
+				Log.d("debug text field", name);
 				Intent newIntent = new Intent(getApplicationContext(), ScreenActivity.class);
 				newIntent.putExtra("statusSwitch", "new");
 				newIntent.putExtra("newPlayerName", name);
@@ -109,10 +110,10 @@ public class Cover extends Activity {
 	}
 	
 	public void load(String playerName) {
-		Player player = dbHandler.getPlayer(dbHandler.getIDbyName(DatabaseHandler.TABLE_PLAYERS, playerName));
+		Player player = dbHandler.getPlayer(dbHandler.getIDbyName(DatabaseHandler.TABLE_PLAYERS, playerName));		
 		Intent newIntent = new Intent(getApplicationContext(), ScreenActivity.class);
 		newIntent.putExtra("statusSwitch", "load");
-		newIntent.putExtra("playerName", player.getNama());
+		newIntent.putExtra("loadPlayerName", player.getNama());		
 		startActivity(newIntent);
 	}
 }
