@@ -41,11 +41,15 @@ public class ScreenActivity extends Activity {
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		Bundle extras = getIntent().getExtras();
 		dbHandler = Cover.dbHandler;
+		
 		if(extras.getString("statusSwitch").equals("load")) {				
 			player = dbHandler.getPlayer(dbHandler.getIDbyName(DatabaseHandler.TABLE_PLAYERS, extras.getString("loadPlayerName")));
+			
 		} else if(extras.getString("statusSwitch").equals("new")) {
 			player = new Player(extras.getString("newPlayerName"));
+//			player.setCurX(2);
 		}
+		
 		Log.d("cek nama player", player.getNama());
 		
 		setMap(new CityScreenView(this, metrics.widthPixels, metrics.heightPixels, player));

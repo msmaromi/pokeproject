@@ -159,14 +159,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
  
         Cursor cursor = db.query(TABLE_PLAYERS, new String[] { 
-                KEY_PLAYER_NAME, 
-                KEY_TIME,
+                KEY_PLAYER_NAME,                 
                 KEY_MONEY,
+                KEY_CURRENT_X,
+                KEY_CURRENT_Y,
                 KEY_NUMBER_WIN,
                 KEY_NUMBER_LOSE,
                 KEY_NUMBER_ESCAPE,
-                KEY_CURRENT_X,
-                KEY_CURRENT_Y,
+                KEY_TIME,               
                 KEY_PLAYER_COLOR                
                 //...
                 }, KEY_ID + "=?",
@@ -197,15 +197,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	SQLiteDatabase db = this.getReadableDatabase();
     	
     	Cursor cursor = db.query(TABLE_PLAYERS, new String[] { 
-    			KEY_PLAYER_NAME, 
-                KEY_TIME,
+    			KEY_PLAYER_NAME,                 
                 KEY_MONEY,
+                KEY_CURRENT_X,
+                KEY_CURRENT_Y,
                 KEY_NUMBER_WIN,
                 KEY_NUMBER_LOSE,
                 KEY_NUMBER_ESCAPE,
-                KEY_CURRENT_X,
-                KEY_CURRENT_Y,
-                KEY_PLAYER_COLOR
+                KEY_TIME,               
+                KEY_PLAYER_COLOR                
+                //...
                 //...
                 }, null,
                 null, null, null, null, null);
@@ -473,8 +474,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
  
         Cursor cursor = db.query(TABLE_ITEMS, new String[] { 
-                KEY_ITEM_NAME, 
-                KEY_PRICE               
+        		KEY_PRICE, 
+                KEY_ITEM_NAME               
                 //...
                 }, KEY_ID + "=?",
                 new String[] { id }, null, null, null, null);

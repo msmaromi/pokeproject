@@ -181,6 +181,7 @@ public class Player {
 	}		
 	
 	public void moveHorizontal(int tile) {
+		
 		int absTile = Math.abs(tile);
 		int mod = tile / absTile;
 		for (int i = 0; i < absTile; i++) {
