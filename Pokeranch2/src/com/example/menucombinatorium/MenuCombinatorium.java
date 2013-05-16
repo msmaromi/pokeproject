@@ -3,6 +3,7 @@ package com.example.menucombinatorium;
 import com.example.drivermenu.DriverActivity;
 import com.example.menugan.Monster;
 import com.example.menugan.Player;
+import com.pokeranch.GV;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -27,7 +28,7 @@ public class MenuCombinatorium extends ListActivity {
 		// Show the Up button in the action bar.
 //		getActionBar().setDisplayHomeAsUpEnabled(true);
 //		playerDiMenu = new Player();
-		playerDiMenu = DriverActivity.playerDriver;
+		playerDiMenu = GV.player;
 		
 //		Monster m1 = new Monster("monster 1");
 //	    Monster m2 = new Monster("monster 2");
@@ -78,7 +79,7 @@ public class MenuCombinatorium extends ListActivity {
 						MonsterGabungan = Monster1.Combine(Monster2, Monster1.getNama()+Monster2.getNama());						
 						playerDiMenu.delMonster(Monster2);
 						playerDiMenu.addMonster(MonsterGabungan);
-						DriverActivity.playerDriver=playerDiMenu;
+						GV.player=playerDiMenu;
 						Monster1=null;
 						Monster2=null;
 					}

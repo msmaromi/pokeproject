@@ -25,7 +25,7 @@ public class Cover extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cover);
 		dbHandler = DatabaseHandler.getInstance(getApplicationContext());
-		Player player = new Player("ancas");
+		
 //		Monster monster1 = new Monster("pikacu", 0, 0, "pokemon", "listrik", 100, 100, 10, 10, 10, 5, 5, "capek", 1);
 //		Monster monster2 = new Monster("piacu", 0, 0, "pokemon", "listrik", 100, 100, 10, 10, 10, 5, 5, "capek", 1);
 //		Item item1 = new Item(100, "potion");

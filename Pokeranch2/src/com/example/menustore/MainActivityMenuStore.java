@@ -2,7 +2,9 @@ package com.example.menustore;
 
 import com.example.drivermenu.DriverActivity;
 //import com.example.menugan.R;
+import com.pokeranch.GV;
 import com.pokeranch.R;
+import com.pokeranch.maps.StoreActivity;
 import com.example.menugan.Item;
 import com.example.menugan.Monster;
 import com.example.menugan.MonsterBall;
@@ -31,7 +33,7 @@ public class MainActivityMenuStore extends Activity{
         super.onCreate(savedInstanceState);
         
 //        playerDiMenu = new Player();
-        playerDiMenu = DriverActivity.playerDriver;
+        playerDiMenu = GV.player;
 //        playerDiMenu.setNama("a");
 //        playerDiMenu.setUang(10000);
         
@@ -87,8 +89,8 @@ public class MainActivityMenuStore extends Activity{
     }
     
     public void klikBackToGameFromStore(View v){
-    	DriverActivity.playerDriver=playerDiMenu;
-    	Intent i = new Intent(getApplicationContext(),DriverActivity.class);    	    	
+    	GV.player=playerDiMenu;
+    	Intent i = new Intent(getApplicationContext(),StoreActivity.class);    	    	
 //    	i.putExtra("duit", playerDiMenu.getUang());    	
     	startActivity(i);
     }

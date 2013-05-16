@@ -2,7 +2,14 @@ package com.example.menugan;
 
 import com.example.drivermenu.DriverActivity;
 
+import com.pokeranch.GV;
 import com.pokeranch.R;
+import com.pokeranch.maps.CityActivity;
+import com.pokeranch.maps.CombinatoriumActivity;
+import com.pokeranch.maps.HomeActivity;
+import com.pokeranch.maps.StadiumActivity;
+import com.pokeranch.maps.StoreActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -98,7 +105,7 @@ public class MenuCoy extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        playerDiMenu = new Player();
-        playerDiMenu = DriverActivity.playerDriver;
+        playerDiMenu = GV.player;
 //        playerDiMenu = this.getIntent().getParcelableExtra("player");
         
 //        int duitPlayer2 = this.getIntent().getIntExtra("duit", playerDiMenu.getUang());
@@ -115,9 +122,25 @@ public class MenuCoy extends Activity {
     }
     
     public void klikBackToGame(View V){    	
-    	Intent i = new Intent(getApplicationContext(),DriverActivity.class);    	
-//    	i.putExtra("duit", playerDiMenu.getUang());
-    	startActivity(i);
+    	String dari = this.getIntent().getStringExtra("posisiSebelum");
+    	
+    	if(dari.equals("home")){
+    		Intent i = new Intent(getApplicationContext(),HomeActivity.class);    	
+        	startActivity(i);
+    	}else if(dari.equals("store")){
+    		Intent i = new Intent(getApplicationContext(),StoreActivity.class);    	
+        	startActivity(i);
+    	}else if(dari.equals("combinatorium")){
+    		Intent i = new Intent(getApplicationContext(),CombinatoriumActivity.class);    	
+        	startActivity(i);    		
+    	}else if(dari.equals("stadium")){
+    		Intent i = new Intent(getApplicationContext(),StadiumActivity.class);    	
+        	startActivity(i);
+    	}else if(dari.equals("city")){
+    		Intent i = new Intent(getApplicationContext(),CityActivity.class);    	
+        	startActivity(i);
+    	}
+    	
     }
     
     public void klikItem(View v){
@@ -211,7 +234,7 @@ public class MenuCoy extends Activity {
 						public void onClick(View arg0) {
 							// TODO Auto-generated method stub
 							playerDiMenu.defaultMonster = playerDiMenu.listMonster.get(iterasi);
-							DriverActivity.playerDriver = playerDiMenu;
+							GV.player = playerDiMenu;
 						}
 					});
 					
@@ -224,7 +247,7 @@ public class MenuCoy extends Activity {
 							// TODO Auto-generated method stub
 							playerDiMenu.delMonster(playerDiMenu.listMonster.get(iterasi));
 							playerDiMenu.defaultMonster=null;
-							DriverActivity.playerDriver = playerDiMenu;
+							GV.player = playerDiMenu;
 						}
 					});
 					
