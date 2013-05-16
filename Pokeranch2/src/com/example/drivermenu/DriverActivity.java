@@ -8,7 +8,7 @@ import com.example.menugan.MenuCoy;
 import com.example.menugan.Monster;
 import com.example.menugan.Player;
 import com.pokeranch.R;
-import com.example.menuhome.HomeActivity;
+import com.example.menuhome.MenuHomeActivity;
 import com.example.menustore.MainActivityMenuStore;
 
 import android.os.Bundle;
@@ -55,10 +55,10 @@ public class DriverActivity extends Activity {
 	        playerDriver.addItem(i11);
 	        playerDriver.addItem(i12);
 	        
-	        Monster m5 = new Monster("imba 1", 99, 1, "Yi", "Api", 5000, 5000, 5000, 100, 100, "xxxx", 100);
+	        Monster m5 = new Monster("imba 1", 99, 1, "Yi", "Api", 5000, 5000, 5000, 100, 100, 0, 0,"xxxx", 100);
 	        m5.addSkill();
 	        m5.setCurrentHP(1);
-	        Monster m6 = new Monster("imba 2", 99, 1, "One", "Air", 4000, 6000, 5000, 100, 100, "xxxx", 100);
+	        Monster m6 = new Monster("imba 2", 99, 1, "One", "Air", 4000, 6000, 5000, 100, 100, 0, 0, "xxxx", 100);
 	        m6.addSkill();
 	        Monster m1 = new Monster("monster 1");
 	        m1.setHP(1000);
@@ -121,7 +121,7 @@ public class DriverActivity extends Activity {
 	}
 		
 	public void klikDriverHome(View v){
-		Intent i = new Intent(getApplicationContext(),HomeActivity.class);
+		Intent i = new Intent(getApplicationContext(),MenuHomeActivity.class);
 		startActivity(i);
 	}
 	

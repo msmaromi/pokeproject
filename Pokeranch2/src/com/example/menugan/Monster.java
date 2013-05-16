@@ -36,6 +36,9 @@ public class Monster {
     public SkillMonster Skill[];
     private int noSkill=0;
     
+    private int curX;
+	private int curY;
+    
     public Monster(){
         Nama = "xxxx";
         Level = 0;
@@ -72,7 +75,7 @@ public class Monster {
         Umur = 0;
     }
     
-    public Monster(String nm,int lvl,int ex,String sp,String el,int mhp,int mmp,int spd,int be,int bu,String st,int um){
+    public Monster(String nm,int lvl,int ex,String sp,String el,int mhp,int mmp,int spd,int bu,int be,int cx,int cy,String st,int um){
         Nama = nm;
         Level = lvl;
         Exp = ex;
@@ -87,6 +90,8 @@ public class Monster {
         CurrentMP = MP;
         Status = st;
         Umur = um;
+        curX = cx;
+        curY = cy;
     }
     
     public String getNama(){
@@ -684,5 +689,21 @@ public class Monster {
     	CurrentHP = HP;
     	CurrentMP = MP;
     }
+    
+    public int getX() {
+		return curX;
+	}
+	
+	public int getY() {
+		return curY;
+	}
+	
+	public void setX(int v) {
+		curX = v;
+	}
+	
+	public void setY(int v) {
+		curY = v;
+	}
     
 }

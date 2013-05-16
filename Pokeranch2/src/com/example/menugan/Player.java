@@ -1,6 +1,10 @@
 package com.example.menugan;
 import java.util.ArrayList;
 
+import com.pokeranch.GV;
+import com.pokeranch.ScreenActivity;
+import com.pokeranch.ScreenView;
+
 
 public class Player {
 
@@ -34,7 +38,7 @@ public class Player {
     }
     
     public Player(String a){
-        nama="a";
+        nama=a;
         uang = 1000;
         curX=0;
         curY=0;
@@ -47,6 +51,20 @@ public class Player {
         listMonster = new ArrayList<Monster>();
     }
     
+    public Player(String nama, int uang, int curX, int curY, int jumlahMenang, int jumlahKalah, int jumlahEscape, int waktu, String warnaPlayer, ArrayList<Monster> listMonster, ArrayList<Item> listItem) {
+    	this.nama = nama;
+    	this.uang = uang;
+    	this.curX = curX;
+    	this.curY = curY;
+    	this.jumlahMenang = jumlahMenang;
+    	this.jumlahKalah = jumlahKalah;
+    	this.jumlahEscape = jumlahEscape;
+    	this.waktu = waktu;
+    	this.warnaPlayer = warnaPlayer;
+    	this.listMonster = listMonster;
+    	this.listItem = listItem;
+    }
+    
     /*------------------------------------------------------getter-------------------------------- */
     public String getNama(){
         return nama;
@@ -54,14 +72,6 @@ public class Player {
 
     public int getUang(){
         return uang;
-    }
-
-    public int getCurX(){
-        return curX;
-    }
-
-    public int getCurY(){
-        return curY;
     }
 
     public int getJumlahMenang(){
@@ -146,14 +156,6 @@ public class Player {
 
     public void setWarna(String _w){
         warnaPlayer = _w;
-    }
-
-    public void setCurX(int i){
-            curX=i;
-    }
-
-    public void setCurY(int i){
-            curY=i;
     }
 
     /*-------------------------------------------method utama--------------------------------------------------------------- */
@@ -871,5 +873,82 @@ public class Player {
 //    		return (*(Monster*)0);
 //    	}
 //    }
+    
+    public int getX() {
+		return curX;
+	}
+	
+	public int getY() {
+		return curY;
+	}
+	
+	public void setX(int v) {
+		curX = v;
+	}
+	
+	public void setY(int v) {
+		curY = v;
+	}
+	
+	public void moveHorizontal(int tile) {
+		ScreenView screen = GV.activeActivity.getScreenView();
+		int absTile = Math.abs(tile);
+		int mod = tile / absTile;
+		for (int i = 0; i < absTile; i++) {
+			if (screen.getMapId(curX + mod, curY) > 0 && screen.getMapId(curX + mod, curY) < 10 && screen.getMapId(curX + mod, curY) != 4) {
+				break;
+			}
+			if (curX + mod < 0 || curX + mod >= screen.getWidth()) {
+				break;
+			}
+			curX += mod;
+		}
+		processTile();
+	}
+	
+	public void moveVertical(int tile) {
+		ScreenView screen = GV.activeActivity.getScreenView();
+		int absTile = Math.abs(tile);
+		int mod = tile / absTile;
+		for (int i = 0; i < absTile; i++) {
+			if (screen.getMapId(curX, curY + mod) > 0 && screen.getMapId(curX, curY + mod) < 10 && screen.getMapId(curX, curY + mod) != 4) {
+				break;
+			}
+			if (curY + mod < 0 || curY + mod >= screen.getHeight()) {
+				break;
+			}
+			curY += mod;
+		}
+		processTile();
+	}
+	
+	public void setPosition(int x, int y) {
+		curX = x;
+		curY = y;
+	}
+	
+    private void processTile() {
+		ScreenView screen = GV.activeActivity.getScreenView();
+		ScreenActivity act = (ScreenActivity)GV.activeActivity;
+		if (screen.getMapId(curX, curY) == 10) {
+			act.switchScreen("home");
+		} else if (screen.getMapId(curX, curY) == 11) {
+			act.switchScreen("store");
+		} else if (screen.getMapId(curX, curY) == 12) {
+			act.switchScreen("combinatorium");
+		} else if (screen.getMapId(curX, curY) == 13) {
+			act.switchScreen("stadium");
+		} else if (screen.getMapId(curX, curY) == 14) {
+			act.switchScreen("luar");
+		} else if (screen.getMapId(curX, curY) == 15) {
+			act.switchScreen("city-home");
+		} else if (screen.getMapId(curX, curY) == 16) {
+			act.switchScreen("city-store");
+		} else if (screen.getMapId(curX, curY) == 17) {
+			act.switchScreen("city-combinatorium");
+		} else if (screen.getMapId(curX, curY) == 18) {
+			act.switchScreen("city-stadium");
+		}
+	}
 
 }//end class
