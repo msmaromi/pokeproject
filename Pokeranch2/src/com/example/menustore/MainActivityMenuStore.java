@@ -4,7 +4,12 @@ import com.example.drivermenu.DriverActivity;
 //import com.example.menugan.R;
 import com.pokeranch.R;
 import com.example.menugan.Item;
+import com.example.menugan.Monster;
+import com.example.menugan.MonsterBall;
+import com.example.menugan.MonsterEgg;
 import com.example.menugan.Player;
+import com.example.menugan.Potion;
+import com.example.menugan.StatusIncrease;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -123,7 +128,7 @@ public class MainActivityMenuStore extends Activity{
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						playerDiMenu.sell(new Item(100,"Potion"));					
+						playerDiMenu.sell(new Potion());					
 					}
 				});
     		}
@@ -132,7 +137,7 @@ public class MainActivityMenuStore extends Activity{
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						playerDiMenu.sell(new Item(500,"Monster Ball"));					
+						playerDiMenu.sell(new MonsterBall());					
 					}
 				});
     		}
@@ -140,8 +145,8 @@ public class MainActivityMenuStore extends Activity{
 	    		arrayBtnItem[i].setOnClickListener(new OnClickListener() {				
 					@Override
 					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						playerDiMenu.sell(new Item(1000,"Monster Egg"));					
+						// TODO Auto-generated method stub						
+						playerDiMenu.sell(new MonsterEgg());					
 					}
 				});
     		}
@@ -150,7 +155,7 @@ public class MainActivityMenuStore extends Activity{
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						playerDiMenu.sell(new Item(200,"Stat Permanen Increase"));					
+						playerDiMenu.sell(new StatusIncrease());					
 					}
 				});
     		}
@@ -184,23 +189,23 @@ public class MainActivityMenuStore extends Activity{
     
     
     public void buyPotion(View v){
-    	Item potion = new Item(100,"Potion");
+    	Item potion = new Potion();
     	playerDiMenu.buy(potion);
     }
     
     public void buyMonsterBall(View v){
-    	Item potion = new Item(500,"Monster Ball");
-    	playerDiMenu.buy(potion);
+    	Item ball = new MonsterBall();
+    	playerDiMenu.buy(ball);
     }
     
     public void buyMonsterEgg(View v){
-    	Item potion = new Item(1000,"Monster Egg");
-    	playerDiMenu.buy(potion);
+    	Item egg = new MonsterEgg();
+    	playerDiMenu.buy(egg);
     }
     
     public void buyStatPermanenIncrease(View v){
-    	Item potion = new Item(300,"Stat Permanen Increase");
-    	playerDiMenu.buy(potion);
+    	Item stat = new StatusIncrease();
+    	playerDiMenu.buy(stat);
     }
     
 }//end activity

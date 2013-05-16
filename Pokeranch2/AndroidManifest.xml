@@ -35,6 +35,7 @@
         
         <activity
             android:name="com.example.menugan.MenuCoy"
+            android:noHistory="true"
             android:label="Menu Utama" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN5" />
@@ -44,6 +45,7 @@
         </activity>
         <activity
             android:name="com.example.menustore.MainActivityMenuStore"
+            android:noHistory="true"
             android:label="Store" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN3" />
@@ -54,6 +56,7 @@
         <activity
             android:name="com.example.menucombinatorium.MenuCombinatorium"
             android:label="Combinatorium"
+            android:noHistory="true"
             android:parentActivityName="android.app.ListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN1" />
@@ -63,6 +66,7 @@
         </activity>
         <activity
             android:name="com.example.drivermenu.DriverActivity"
+            android:noHistory="true"
             android:label="Driver Menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -72,6 +76,7 @@
         </activity>
         <activity
             android:name="com.example.menuhome.HomeActivity"
+            android:noHistory="true"
             android:label="Menu Home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN6" />
