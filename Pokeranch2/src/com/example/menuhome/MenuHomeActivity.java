@@ -11,7 +11,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 
-public class HomeActivity extends Activity {
+public class MenuHomeActivity extends Activity {
 
 	private Player playerHome;
 	
