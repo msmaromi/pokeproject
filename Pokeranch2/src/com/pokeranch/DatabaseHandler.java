@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import com.pokeranch.model.Item;
-import com.pokeranch.model.Monster;
-import com.pokeranch.model.Player;
+import com.example.menugan.Player;
+import com.example.menugan.Monster;
+import com.example.menugan.Item;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -146,8 +146,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NUMBER_WIN, player.getJumlahMenang());
         values.put(KEY_NUMBER_LOSE, player.getJumlahKalah());
         values.put(KEY_NUMBER_ESCAPE, player.getJumlahEscape());
-        values.put(KEY_CURRENT_X, player.getCurX());
-        values.put(KEY_CURRENT_Y, player.getCurY());
+        values.put(KEY_CURRENT_X, player.getX());
+        values.put(KEY_CURRENT_Y, player.getY());
         values.put(KEY_PLAYER_COLOR, player.getWarnaPlayer());
         //...
  
@@ -258,8 +258,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NUMBER_WIN, player.getJumlahMenang());
         values.put(KEY_NUMBER_LOSE, player.getJumlahKalah());
         values.put(KEY_NUMBER_ESCAPE, player.getJumlahEscape());
-        values.put(KEY_CURRENT_X, player.getCurX());
-        values.put(KEY_CURRENT_Y, player.getCurY());
+        values.put(KEY_CURRENT_X, player.getX());
+        values.put(KEY_CURRENT_Y, player.getY());
         values.put(KEY_PLAYER_COLOR, player.getWarnaPlayer());
         //...
         db.update(TABLE_PLAYERS, values, KEY_ID + " LIKE ?",

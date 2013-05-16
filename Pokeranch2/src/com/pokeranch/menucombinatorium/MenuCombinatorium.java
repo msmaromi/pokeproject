@@ -1,6 +1,7 @@
 package com.pokeranch.menucombinatorium;
 
-import com.pokeranch.model.*;
+import com.example.menugan.Monster;
+import com.example.menugan.Player;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;

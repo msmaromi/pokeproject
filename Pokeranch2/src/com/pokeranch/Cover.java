@@ -2,9 +2,8 @@ package com.pokeranch;
 
 import java.util.ArrayList;
 
-import com.pokeranch.model.*;
-
-import com.pokeranch.model.Player;
+import com.example.menugan.Player;
+import com.pokeranch.maps.HomeActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -98,12 +97,14 @@ public class Cover extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				GV.player.setPosition(6, 10);
 				String name = newPlayerTextField.getText().toString();
 				Log.d("debug text field", name);
-				Intent newIntent = new Intent(getApplicationContext(), ScreenActivity.class);
+				Intent newIntent = new Intent(getApplicationContext(), HomeActivity.class);
 				newIntent.putExtra("statusSwitch", "new");
 				newIntent.putExtra("newPlayerName", name);
 				startActivity(newIntent);
+				finish();
 			}
 		});
 					
@@ -111,7 +112,7 @@ public class Cover extends Activity {
 	
 	public void load(String playerName) {
 		Player player = dbHandler.getPlayer(dbHandler.getIDbyName(DatabaseHandler.TABLE_PLAYERS, playerName));		
-		Intent newIntent = new Intent(getApplicationContext(), ScreenActivity.class);
+		Intent newIntent = new Intent(getApplicationContext(), HomeActivity.class);
 		newIntent.putExtra("statusSwitch", "load");
 		newIntent.putExtra("loadPlayerName", player.getNama());		
 		startActivity(newIntent);

@@ -2,12 +2,17 @@ package com.pokeranch;
 
 import java.util.ArrayList;
 
-import com.pokeranch.R;
-import com.pokeranch.model.Item;
-import com.pokeranch.model.Monster;
-import com.pokeranch.model.Player;
+import com.example.menugan.Item;
+import com.example.menugan.Monster;
+import com.pokeranch.maps.CityActivity;
+import com.pokeranch.maps.CombinatoriumActivity;
+import com.pokeranch.maps.HomeActivity;
+import com.pokeranch.maps.NavigationButton;
+import com.pokeranch.maps.StadiumActivity;
+import com.pokeranch.maps.StoreActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -26,11 +31,10 @@ public class ScreenActivity extends Activity {
 	private NavigationButton navigationButton;
 	private FrameLayout frameLayout;
 	
-	private Player player;
-	private DatabaseHandler dbHandler;
+	protected String id;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {		
+	protected void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -39,20 +43,14 @@ public class ScreenActivity extends Activity {
 		Log.d(TAG,"start game activity");
 		metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		Bundle extras = getIntent().getExtras();
-		dbHandler = Cover.dbHandler;
 		
-		if(extras.getString("statusSwitch").equals("load")) {				
-			player = dbHandler.getPlayer(dbHandler.getIDbyName(DatabaseHandler.TABLE_PLAYERS, extras.getString("loadPlayerName")));
-			
-		} else if(extras.getString("statusSwitch").equals("new")) {
-			player = new Player(extras.getString("newPlayerName"));
-//			player.setCurX(2);
-		}
+		navigationButton = new NavigationButton(this);
+		frameLayout = new FrameLayout(this);
+		frameLayout.addView(screenView);
+		frameLayout.addView(navigationButton);
+		setContentView(frameLayout);
 		
-		Log.d("cek nama player", player.getNama());
-		
-		setMap(new CityScreenView(this, metrics.widthPixels, metrics.heightPixels, player));
+		GV.activeActivity = this;
 	}
 	
 	@Override
@@ -62,26 +60,47 @@ public class ScreenActivity extends Activity {
 		super.onPause();			
 	}
 	
-	public Player getPlayer() {
-		return player;
+	protected void setId(String id) {
+		this.id = id;
+		screenView = new ScreenView(this, 480, 800, id);
 	}
 	
-	public void setMap(ScreenView map) {
-		if (frameLayout == null) {
-			screenView = map;
-			player.setScreen(screenView);
-			navigationButton = new NavigationButton(this, player);
-			frameLayout = new FrameLayout(this);
-			frameLayout.addView(screenView);
-			frameLayout.addView(navigationButton);
-			setContentView(frameLayout);
-		} else {
-			frameLayout.removeAllViews();
-			screenView = map;
-			player.setScreen(screenView);
-			frameLayout.addView(screenView);
-			frameLayout.addView(navigationButton);
+	public ScreenView getScreenView() {
+		return screenView;
+	}
+	
+	public void switchScreen(String id) {
+		Intent i = new Intent();
+		if (id == "home") {
+			i = new Intent(getApplicationContext(), HomeActivity.class);
+			GV.player.setPosition(6, 11);
+		} else if (id == "home-start") {
+			i = new Intent(getApplicationContext(), HomeActivity.class);
+			GV.player.setPosition(6, 9);
+		} else if (id == "store") {
+			i = new Intent(getApplicationContext(), StoreActivity.class);
+			GV.player.setPosition(5, 7);
+		} else if (id == "combinatorium") {
+			i = new Intent(getApplicationContext(), CombinatoriumActivity.class);
+			GV.player.setPosition(1, 9);
+		} else if (id == "stadium") {
+			i = new Intent(getApplicationContext(), StadiumActivity.class);
+			GV.player.setPosition(10, 10);
+		} else if (id == "city-home") {
+			i = new Intent(getApplicationContext(), CityActivity.class);
+			GV.player.setPosition(2, 3);
+		} else if (id == "city-store") {
+			i = new Intent(getApplicationContext(), CityActivity.class);
+			GV.player.setPosition(6, 4);
+		} else if (id == "city-combinatorium") {
+			i = new Intent(getApplicationContext(), CityActivity.class);
+			GV.player.setPosition(3, 11);
+		} else if (id == "city-stadium") {
+			i = new Intent(getApplicationContext(), CityActivity.class);
+			GV.player.setPosition(7, 16);
 		}
+		startActivity(i);
+		finish();
 	}
 	
 	@Override
@@ -102,16 +121,17 @@ public class ScreenActivity extends Activity {
 	}
 
 	public void save() {
-		if(dbHandler.isPlayerExists(player.getNama())) {
+		Log.d("debug gan", GV.player.getNama());
+		if(GV.dbHandler.isPlayerExists(GV.player.getNama())) {
 			/*
 			 * save player
 			 */
-			dbHandler.updatePlayer(dbHandler.getIDbyName(DatabaseHandler.TABLE_PLAYERS, player.getNama()), player);
+			GV.dbHandler.updatePlayer(GV.dbHandler.getIDbyName(DatabaseHandler.TABLE_PLAYERS, GV.player.getNama()), GV.player);
 			/*
 			 * save monster
 			 */
-			ArrayList<Monster> listMonsterLast = dbHandler.getListMonsterByPlayer(player.getNama());
-			ArrayList<Monster> listMonsterCurrent = player.getListMonster();
+			ArrayList<Monster> listMonsterLast = GV.dbHandler.getListMonsterByPlayer(GV.player.getNama());
+			ArrayList<Monster> listMonsterCurrent = GV.player.listMonster;
 			here: for(int i=0; i<listMonsterLast.size(); i++) {
 				Log.d("monsterlast", String.valueOf(listMonsterLast.size()));
 				Log.d("masuk for", String.valueOf(i));
@@ -119,12 +139,12 @@ public class ScreenActivity extends Activity {
 				for(int j=0; j<listMonsterCurrent.size(); j++) {
 					Monster monsterCurrent = listMonsterCurrent.get(j);
 					if(monsterCurrent.getNama().compareTo(monsterLast.getNama()) == 0) { 
-						dbHandler.updateMonster(dbHandler.getIDbyName(DatabaseHandler.TABLE_MONSTERS, monsterCurrent.getNama()), monsterCurrent);
+						GV.dbHandler.updateMonster(GV.dbHandler.getIDbyName(DatabaseHandler.TABLE_MONSTERS, monsterCurrent.getNama()), monsterCurrent);
 						Log.d("update", monsterCurrent.getNama());
 						continue here;
 					} else {
 						if(j==listMonsterCurrent.size()-1) {
-							dbHandler.deleteMonster(dbHandler.getIDbyName(DatabaseHandler.TABLE_MONSTERS, monsterLast.getNama()));
+							GV.dbHandler.deleteMonster(GV.dbHandler.getIDbyName(DatabaseHandler.TABLE_MONSTERS, monsterLast.getNama()));
 							Log.d("delete", monsterLast.getNama());
 						}						
 					}																
@@ -141,7 +161,7 @@ public class ScreenActivity extends Activity {
 						continue here;
 					else {
 						if(j==listMonsterLast.size()-1) {
-							dbHandler.addMonster(player, monsterCurrent);
+							GV.dbHandler.addMonster(GV.player, monsterCurrent);
 							Log.d("add", monsterCurrent.getNama());	
 						}
 					}																										
@@ -151,8 +171,8 @@ public class ScreenActivity extends Activity {
 			/*
 			 * save item
 			 */
-			ArrayList<Item> listItemLast = dbHandler.getListItemByPlayer(player.getNama());
-			ArrayList<Item> listItemCurrent = player.getListItem();
+			ArrayList<Item> listItemLast = GV.dbHandler.getListItemByPlayer(GV.player.getNama());
+			ArrayList<Item> listItemCurrent = GV.player.listItem;
 			here: for(int i=0; i<listItemLast.size(); i++) {
 //				Log.d("debug", String.valueOf(listItemLast.size()));
 				Item itemLast = listItemLast.get(i);
@@ -160,12 +180,12 @@ public class ScreenActivity extends Activity {
 				for(int j=0; j<listItemCurrent.size(); j++) {					
 					Item itemCurrent = listItemCurrent.get(j);
 					if(itemCurrent.getNama().compareTo(itemLast.getNama()) == 0) { 
-						dbHandler.updateItem(dbHandler.getIDbyName(DatabaseHandler.TABLE_ITEMS, itemCurrent.getNama()), itemCurrent);
+						GV.dbHandler.updateItem(GV.dbHandler.getIDbyName(DatabaseHandler.TABLE_ITEMS, itemCurrent.getNama()), itemCurrent);
 						Log.d("update", itemCurrent.getNama());	
 						continue here;
 					} else {
 						if(j==listItemCurrent.size()-1) {
-							dbHandler.deleteItem(dbHandler.getIDbyName(DatabaseHandler.TABLE_ITEMS, itemLast.getNama()));
+							GV.dbHandler.deleteItem(GV.dbHandler.getIDbyName(DatabaseHandler.TABLE_ITEMS, itemLast.getNama()));
 							Log.d("delete", itemLast.getNama());
 						}						
 					}															
@@ -180,21 +200,21 @@ public class ScreenActivity extends Activity {
 						continue here;
 					} else {
 						if(j==listItemLast.size()-1) {
-							dbHandler.addItem(player, itemCurrent);
+							GV.dbHandler.addItem(GV.player, itemCurrent);
 							Log.d("add", itemCurrent.getNama());
 						}						
 					}															
 				}
 			}
 		} else {
-			dbHandler.addPlayer(player);			
-			for(int i=0; i<player.getListMonster().size(); i++) {
-				dbHandler.addMonster(player, player.getListMonster().get(i));
+			GV.dbHandler.addPlayer(GV.player);			
+			for(int i=0; i<GV.player.listMonster.size(); i++) {
+				GV.dbHandler.addMonster(GV.player, GV.player.listMonster.get(i));
 			}	
-			for(int i=0; i<player.getListItem().size(); i++) {
-				dbHandler.addItem(player, player.getListItem().get(i));
+			for(int i=0; i<GV.player.listItem.size(); i++) {
+				GV.dbHandler.addItem(GV.player, GV.player.listItem.get(i));
 			}
 		}
 	}
-		
+
 }

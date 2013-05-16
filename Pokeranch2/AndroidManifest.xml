@@ -13,37 +13,20 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >  
-        <activity
-            android:name="com.pokeranch.Cover"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         
         <activity
-            android:name="com.pokeranch.ScreenActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN1" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:name="com.pokeranch.menugan.MenuCoy"
+            android:name="com.example.menugan.MenuCoy"
+            android:noHistory="true"
             android:label="Menu Utama" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN2" />
+                <action android:name="android.intent.action.MAIN5" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pokeranch.menustore.MainActivityMenuStore"
+            android:name="com.example.menustore.MainActivityMenuStore"
+            android:noHistory="true"
             android:label="Store" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN3" />
@@ -52,13 +35,89 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pokeranch.menucombinatorium.MenuCombinatorium"
+            android:name="com.example.menucombinatorium.MenuCombinatorium"
             android:label="Combinatorium"
+            android:noHistory="true"
             android:parentActivityName="android.app.ListActivity" >
-            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN1" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.drivermenu.DriverActivity"            
+            android:label="Driver Menu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity            
+            android:name="com.example.menuhome.MenuHomeActivity"
+            android:noHistory="true"
+            android:label="Menu Home" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN6" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pokeranch.GV"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN2" />
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pokeranch.maps.CityActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.CITY" />
+                <category android:name="android.intent.category.MAP" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pokeranch.maps.HomeActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.HOME" />
+                <category android:name="android.intent.category.MAP" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pokeranch.maps.StoreActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.STORE" />
+                <category android:name="android.intent.category.MAP" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pokeranch.maps.StadiumActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.STADIUM" />
+                <category android:name="android.intent.category.MAP" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pokeranch.maps.CombinatoriumActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.COMBINATORIUM" />
+                <category android:name="android.intent.category.MAP" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.pokeranch.Cover"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN3" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

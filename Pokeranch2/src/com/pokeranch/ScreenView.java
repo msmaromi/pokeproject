@@ -1,6 +1,6 @@
 package com.pokeranch;
 
-import com.pokeranch.model.Player;
+import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,12 +22,14 @@ public class ScreenView extends SurfaceView implements SurfaceHolder.Callback {
 	public GameLoopThread thread;
 	private Matrix matrix;	
 	private Paint paint;
+	private Bitmap bitmap;
+	private String id;
 	
-	protected Player player;
+	protected static HashMap<String, String[]> map;
 	
-	protected ScreenView(Context context, int screenWidth, int screenHeight, Player player) {
+	protected ScreenView(Context context, int screenWidth, int screenHeight, String id) {
 		super(context);
-		this.player = player;
+		this.id = id;
 		
 		getHolder().addCallback(this);
 		setFocusable(true);
@@ -35,13 +37,123 @@ public class ScreenView extends SurfaceView implements SurfaceHolder.Callback {
 		matrix = new Matrix();
 		paint = new Paint();
 		bitmap = DrawableManager.getInstance().getMapBitmap();
-		map = new String[20];
-		for (int i = 0; i < map.length; i++) {
-			map[i] = "";
-			for (int j = 0; j < map[0].length(); j++) {
-				map[i] += "0";
-			}
-		}
+		
+		map = new HashMap<String, String[]>();
+		
+		map.put("city", new String[] {
+				"CCCCCCCCCCCC",
+				"CBBBAAACAAAC",
+				"CBKBAAAAACAC",
+				"CAAAACAAAAAC",
+				"CCAAAAAAAAAC",
+				"CAACABLBAAAC",
+				"CAAAABBBAAAO",
+				"CAAACBBBCAAC",
+				"CAAACCACAAAC",
+				"CAAAAAAAACAC",
+				"CAAABBBBAAAC",
+				"CACAMBBBAAAC",
+				"CAAABBBBAAAC",
+				"CAAAACAAAAAC",
+				"CCAAAAAAAAAC",
+				"CAABBBBACAAC",
+				"CAABBBNAAACC",
+				"CAABBBBACAAC",
+				"CCAAACAAAAAC",
+				"CCCCCCCCCCCC"
+			});
+		
+		map.put("home", new String[] {
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZFFFFFFFFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFFFFPFFFZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ"
+			});
+		
+		map.put("store", new String[] {
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZFFFQFFFFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFEEEEEEFZZ",
+				"ZZFFFFFFFFZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ"
+			});
+		
+		map.put("combinatorium", new String[] {
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"FFFFFFFFFFFF",
+				"FEEEEEEEEEEF",
+				"FEEEEEEEEEEF",
+				"REEEEEEEEEEF",
+				"FEEEEEEEEEEF",
+				"FEEEEEEEEEEF",
+				"FEEEEEEEEEEF",
+				"FFFFFFFFFFFF",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ"
+			});
+		
+		map.put("stadium", new String[] {
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"FFFFFFFFFFFF",
+				"FEEEEEEEEEEF",
+				"FEEEEEEEEEEF",
+				"FEEEEEEEEEEF",
+				"FEEEEEEEEEES",
+				"FEEEEEEEEEEF",
+				"FEEEEEEEEEEF",
+				"FFFFFFFFFFFF",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ",
+				"ZZZZZZZZZZZZ"
+			});
 	}
 	
 	@Override
@@ -106,27 +218,36 @@ public class ScreenView extends SurfaceView implements SurfaceHolder.Callback {
 		return true;
 	}
 	
-	private Bitmap bitmap;
-	
-	protected String[] map;
-	
 	private void drawMap(Canvas canvas) {
-		for (int i = 0; i < map.length; i++) {
-			for (int j = 0; j < map[0].length(); j++) {
-				Rect src = new Rect(0, getMapId(j, i) * 60, 40, (getMapId(j, i) + 1) * 60);
-				Rect dst = new Rect(j * 40, i * 40, (j + 1) * 40, (i + 1) * 40);
-				canvas.drawBitmap(bitmap, src, dst, paint);
+		for (int i = 0; i < map.get(id).length; i++) {
+			for (int j = 0; j < map.get(id)[0].length(); j++) {
+				if (getMapId(j, i) == 25) {
+					paint.setColor(Color.BLACK);
+					canvas.drawRect(j * 40, i * 40, (j + 1) * 40, (i + 1) * 40, paint);
+				} else {
+					Rect src = new Rect(0, getMapId(j, i) * 60, 40, (getMapId(j, i) + 1) * 60);
+					Rect dst = new Rect(j * 40, i * 40, (j + 1) * 40, (i + 1) * 40);
+					canvas.drawBitmap(bitmap, src, dst, paint);
+				}
 			}
 		}
 		paint.setColor(Color.BLACK);
-		if(player != null) {
-			canvas.drawCircle(player.getCurX() * 40 + 20, player.getCurY() * 40 + 20, 20, paint);
+		if(GV.player != null) {
+			canvas.drawCircle(GV.player.getX() * 40 + 20, GV.player.getY() * 40 + 20, 20, paint);
 		}
 		paint.setColor(Color.WHITE);
 	}
 	
 	public int getMapId(int x, int y) {
-		return map[y].charAt(x) - 'A';
+		return map.get(id)[y].charAt(x) - 'A';
+	}
+	
+	public int getMapWidth() {
+		return map.get(id)[0].length();
+	}
+	
+	public int getMapHeight() {
+		return map.get(id).length;
 	}
 
 }
