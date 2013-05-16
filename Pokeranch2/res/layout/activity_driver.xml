@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DriverActivity" >
+
+    <Button 
+        android:id="@+id/driverMenuUtama"
+        android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"	       
+        android:text="Menu Utama"
+        android:onClick="klikDriverUtama"
+	/>
+      
+    <Button 
+        android:id="@+id/driverMenuStore"
+        android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"	       
+        android:text="Menu Store"
+        android:onClick="klikDriverStore"
+	/>
+    
+    <Button 
+        android:id="@+id/driverMenuComb"
+        android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"	       
+        android:text="Menu Combinatorium"
+        android:onClick="klikDriverComb"
+	/>
+    
+    <Button 
+        android:id="@+id/driverMenuHome"
+        android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"	       
+        android:text="Menu Home"
+        android:onClick="klikDriverHome"
+        />
+
+</LinearLayout>

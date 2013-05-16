@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  	>
+
+	<LinearLayout 
+		android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    >
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:orientation="horizontal"
+	        >
+		    <Button 
+		        android:id="@+id/setDefaultMon"
+		        android:layout_width="0px"
+		    	android:layout_height="wrap_content"
+		    	android:text="Set as default monster"
+		    	android:layout_weight="1"		    	
+		        />
+	    
+	        <Button 
+		        android:id="@+id/dismissMon"
+		        android:layout_width="0px"
+		    	android:layout_height="wrap_content"
+		    	android:text="dismiss"
+		    	android:layout_weight="1"		    	
+		        />
+	    </LinearLayout>
+	    
+	    
+	    <TextView 
+	        android:id="@+id/namaMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/currentHPMPSpeedMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/levelMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/expMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/speciesMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/elemenMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	
+	    <TextView 
+	        android:id="@+id/HPMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/MPMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/speedMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/statusMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/umurMon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"        
+	        />       
+	    
+	    <LinearLayout 
+	        android:id="@+id/layoutSkill"
+	        android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"        
+	        >
+	        
+	        
+	    </LinearLayout>
+	    
+	    
+	    <Button
+	    	android:layout_width="match_parent"    	
+	    	android:layout_height="wrap_content"    	
+	    	android:text="Back"
+	    	android:onClick="klikBackToMenu"
+	        />
+	    
+    </LinearLayout>
+    
+</ScrollView>

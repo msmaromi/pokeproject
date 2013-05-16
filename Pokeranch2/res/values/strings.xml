@@ -19,5 +19,7 @@
     <string name="choose_player">Choose Player</string>
     <string name="create_player">Create Player</string>
     <string name="button_ok">OK</string>
-
+    <string name="title_activity_driver">DriverActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+	
 </resources>
