@@ -24,10 +24,9 @@ public class MonsterBall extends Item {
   }
   
   public void execute(Player p, Monster m) {    
-    /*if(m.isSekarat())
-      p.addMonster(m);
-    else
-      System.out.println("monster tidak bisa ditangkap");
-      */
+	    if(m.isSekarat())
+	      p.addMonster(m);         
   }
+  
+  
 }

@@ -48,7 +48,9 @@ public class StatusIncrease extends Item {
   
   @Override
   public void execute(Monster m) {
-//    m.setHP(m.getHP()+hpMaxTambah);
-//    m.setMP(m.getMP()+mpMaxTambah);
+    m.setHP(m.getHP()+hpMaxTambah);
+    m.setMP(m.getMP()+mpMaxTambah);
   }
+  
+  
 }

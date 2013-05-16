@@ -48,9 +48,8 @@ public class Potion extends Item {
   
   @Override
   public void execute(Monster m) {
-//    m.setCurrentHP(m.getCurrentHP()+hpTambah);
-//    m.setCurrentMP(m.getCurrentMP()+mpTambah);
-    
+    m.setCurrentHP(m.getCurrentHP()+hpTambah);
+    m.setCurrentMP(m.getCurrentMP()+mpTambah);
   }
   
 }
