@@ -116,7 +116,7 @@ public class MenuCoy extends Activity {
         
         TextView poketimetext = (TextView) findViewById(R.id.waktu_pokeranch);
         
-        poketimetext.setText("Waktu \nDay : "+GV.poketime.getPokeDay()+"\nSecond : "+GV.poketime.getPokeSecond());
+        poketimetext.setText( GV.poketime.getSiangMalam()+"\nDay : "+GV.poketime.getPokeDay()+"\nSecond : "+GV.poketime.getPokeSecond());
         
     }
 

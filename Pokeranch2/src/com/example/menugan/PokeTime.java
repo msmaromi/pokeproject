@@ -12,6 +12,7 @@ public class PokeTime {
 	private int pokeSecond;
 	private int pokeDay;
 	private Timer timer;
+	private String siangAtauMalam;
 
 	public PokeTime() {
 		pokeSecond = 0;
@@ -19,6 +20,14 @@ public class PokeTime {
 		timer = new Timer();
 	}
 
+	public String getSiangMalam(){
+		if(pokeSecond<60){
+			return "Siang";
+		}else{
+			return "Malam";
+		}
+	}
+	
 	public PokeTime(int second, int day, Timer t) {
 		pokeSecond = second;
 		pokeDay = day;
