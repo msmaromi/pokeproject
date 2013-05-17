@@ -33,6 +33,10 @@ public class StadiumActivity extends ScreenActivity {
 				startActivity(i2);
 				return true;
 				
+			case R.id.menu_stadium_gan:
+				//masukin battle
+				return true;
+				
 			default:
 				return super.onOptionsItemSelected(item);
 		}

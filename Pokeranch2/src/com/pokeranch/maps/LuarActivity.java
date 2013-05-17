@@ -3,13 +3,18 @@ package com.pokeranch.maps;
 import java.util.Random;
 import java.util.Vector;
 
+import com.example.menugan.MenuCoy;
 import com.pokeranch.GV;
 import com.pokeranch.MonsterNPC;
+import com.pokeranch.R;
 import com.pokeranch.ScreenActivity;
 import com.pokeranch.ScreenView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class LuarActivity extends ScreenActivity {
 	
@@ -59,4 +64,28 @@ public class LuarActivity extends ScreenActivity {
 		return monsters;
 	}
 
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.tombol_luar_gan, menu);
+		return true;
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {			
+			case R.id.menu_utama_gan:
+				Intent i2 = new Intent(getApplicationContext(),MenuCoy.class);
+				i2.putExtra("posisiSebelum", "luar");
+				startActivity(i2);
+				return true;
+				
+			case R.id.menu_cut_gan:
+				//method cut
+				return true;
+				
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
 }

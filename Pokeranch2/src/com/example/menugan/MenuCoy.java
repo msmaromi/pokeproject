@@ -7,6 +7,7 @@ import com.pokeranch.R;
 import com.pokeranch.maps.CityActivity;
 import com.pokeranch.maps.CombinatoriumActivity;
 import com.pokeranch.maps.HomeActivity;
+import com.pokeranch.maps.LuarActivity;
 import com.pokeranch.maps.StadiumActivity;
 import com.pokeranch.maps.StoreActivity;
 
@@ -138,6 +139,9 @@ public class MenuCoy extends Activity {
         	startActivity(i);
     	}else if(dari.equals("city")){
     		Intent i = new Intent(getApplicationContext(),CityActivity.class);    	
+        	startActivity(i);
+    	}else if(dari.equals("luar")){
+    		Intent i = new Intent(getApplicationContext(),LuarActivity.class);    	
         	startActivity(i);
     	}
     	
