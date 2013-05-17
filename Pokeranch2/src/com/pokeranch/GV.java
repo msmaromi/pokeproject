@@ -5,6 +5,7 @@ import com.example.menugan.Monster;
 import com.example.menugan.MonsterBall;
 import com.example.menugan.MonsterEgg;
 import com.example.menugan.Player;
+import com.example.menugan.PokeTime;
 import com.example.menugan.Potion;
 import com.pokeranch.maps.HomeActivity;
 
@@ -18,15 +19,20 @@ public class GV extends Activity {
 	public static Player player;
 	public static ScreenActivity activeActivity;
 	public static DatabaseHandler dbHandler;
+	public static PokeTime poketime; 
 	
 	private static Context context;
 	
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		poketime = new PokeTime();
+		poketime.start();
+		
 		dbHandler = DatabaseHandler.getInstance(getApplicationContext());
 		context = getApplicationContext();
 		super.onCreate(savedInstanceState);
 		DrawableManager.initInstance(context);
-		player = new Player();
+		player = new Player();		
 		
 		// tambahin item & monster
 		

@@ -52,6 +52,12 @@
 	        android:onClick="klikStatusPlayer"
 		    
 		    />
+		
+		<TextView 
+		    android:id="@+id/waktu_pokeranch"
+	        android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+		    />
 	
 	    
     </LinearLayout>	

@@ -113,6 +113,11 @@ public class MenuCoy extends Activity {
 //        playerDiMenu.setUang(duitPlayer2);                               
         
         setContentView(R.layout.activity_menu);
+        
+        TextView poketimetext = (TextView) findViewById(R.id.waktu_pokeranch);
+        
+        poketimetext.setText("Waktu \nDay : "+GV.poketime.getPokeDay()+"\nSecond : "+GV.poketime.getPokeSecond());
+        
     }
 
     @Override
