@@ -4,10 +4,12 @@ import com.example.drivermenu.DriverActivity;
 import com.example.menugan.Monster;
 import com.example.menugan.Player;
 import com.pokeranch.GV;
+import com.pokeranch.maps.CombinatoriumActivity;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -15,7 +17,7 @@ import android.widget.ListView;
 public class MenuCombinatorium extends ListActivity {
 
 	Player playerDiMenu;
-	String[] stringMenu = new String[]{"Combine","Back"};
+	String[] stringMenu = new String[]{"Combine","Back To Map"};
 	String[] combineMonster;
 	public Monster Monster1;
 	public Monster Monster2;
@@ -63,6 +65,9 @@ public class MenuCombinatorium extends ListActivity {
 			this.setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,stringMenu));
 			Monster1=null;
 			Monster2=null;
+		}else if(pilihan.equals("Back To Map")){
+			Intent i = new Intent(getApplicationContext(),CombinatoriumActivity.class);
+			startActivity(i);
 		}
 		else {
 			for(int j=0;j<playerDiMenu.listMonster.size();j++){				
