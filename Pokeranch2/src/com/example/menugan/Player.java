@@ -898,7 +898,7 @@ public class Player {
 			if (screen.getMapId(curX + mod, curY) > 0 && screen.getMapId(curX + mod, curY) < 10 && screen.getMapId(curX + mod, curY) != 4) {
 				break;
 			}
-			if (curX + mod < 0 || curX + mod >= screen.getWidth()) {
+			if (curX + mod < 0 || curX + mod >= screen.getMapWidth()) {
 				break;
 			}
 			curX += mod;
@@ -914,7 +914,7 @@ public class Player {
 			if (screen.getMapId(curX, curY + mod) > 0 && screen.getMapId(curX, curY + mod) < 10 && screen.getMapId(curX, curY + mod) != 4) {
 				break;
 			}
-			if (curY + mod < 0 || curY + mod >= screen.getHeight()) {
+			if (curY + mod < 0 || curY + mod >= screen.getMapHeight()) {
 				break;
 			}
 			curY += mod;
@@ -948,6 +948,8 @@ public class Player {
 			act.switchScreen("city-combinatorium");
 		} else if (screen.getMapId(curX, curY) == 18) {
 			act.switchScreen("city-stadium");
+		} else if (screen.getMapId(curX, curY) == 19) {
+			act.switchScreen("city-luar");
 		}
 	}
 

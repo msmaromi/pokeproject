@@ -1,6 +1,9 @@
 package com.pokeranch;
 
 import java.util.HashMap;
+import java.util.Vector;
+
+import com.pokeranch.maps.LuarActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -59,6 +62,29 @@ public class ScreenView extends SurfaceView implements SurfaceHolder.Callback {
 				"CAABBBBACAAC",
 				"CAABBBNAAACC",
 				"CAABBBBACAAC",
+				"CCAAACAAAAAC",
+				"CCCCCCCCCCCC"
+			});
+		
+		map.put("luar", new String[] {
+				"CCCCCCCCCCCC",
+				"CAAAAAACAAAC",
+				"CACAAAAAACAC",
+				"CAAAACAAAAAC",
+				"CCAAAAAAAAAC",
+				"CAACAACAAAAC",
+				"TAAAAAAAAAAC",
+				"CAAACAAACAAC",
+				"CAAACCACAAAC",
+				"CAAAAAAAACAC",
+				"CAAAAAAAAAAC",
+				"CACACAAAAAAC",
+				"CAAAAAAAAAAC",
+				"CAAAACAAAAAC",
+				"CCAAAAAAAAAC",
+				"CAAAAAAACAAC",
+				"CAAAAACAAACC",
+				"CAAAAAAACAAC",
 				"CCAAACAAAAAC",
 				"CCCCCCCCCCCC"
 			});
@@ -234,6 +260,19 @@ public class ScreenView extends SurfaceView implements SurfaceHolder.Callback {
 		paint.setColor(Color.BLACK);
 		if(GV.player != null) {
 			canvas.drawCircle(GV.player.getX() * 40 + 20, GV.player.getY() * 40 + 20, 20, paint);
+		}
+		if (GV.activeActivity instanceof LuarActivity) {
+			Vector<MonsterNPC> monsters = ((LuarActivity)GV.activeActivity).getMonsters();
+			for (int i = 0; i < monsters.size(); i++) {
+				if (monsters.elementAt(i).getType() == "random") {
+					paint.setColor(Color.BLUE);
+				} else if (monsters.elementAt(i).getType() == "mendekat") {
+					paint.setColor(Color.RED);
+				} else if (monsters.elementAt(i).getType() == "menjauh") {
+					paint.setColor(Color.GREEN);
+				}
+				canvas.drawCircle(monsters.elementAt(i).getX() * 40 + 20, monsters.elementAt(i).getY() * 40 + 20, 20, paint);
+			}
 		}
 		paint.setColor(Color.WHITE);
 	}

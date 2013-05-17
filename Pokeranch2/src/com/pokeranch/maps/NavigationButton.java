@@ -28,6 +28,9 @@ public class NavigationButton extends RelativeLayout {
 			@Override
 			public void onClick(View arg0) {
 				GV.player.moveHorizontal(1);
+				if (GV.activeActivity instanceof LuarActivity) {
+					((LuarActivity)GV.activeActivity).moveMonsters();
+				}
 			}
 		});
 		
@@ -43,6 +46,9 @@ public class NavigationButton extends RelativeLayout {
 			@Override
 			public void onClick(View arg0) {
 				GV.player.moveVertical(1);
+				if (GV.activeActivity instanceof LuarActivity) {
+					((LuarActivity)GV.activeActivity).moveMonsters();
+				}
 			}
 		});
 		
@@ -58,6 +64,9 @@ public class NavigationButton extends RelativeLayout {
 			@Override
 			public void onClick(View arg0) {
 				GV.player.moveHorizontal(-1);
+				if (GV.activeActivity instanceof LuarActivity) {
+					((LuarActivity)GV.activeActivity).moveMonsters();
+				}
 			}
 		});
 		
@@ -73,6 +82,9 @@ public class NavigationButton extends RelativeLayout {
 			@Override
 			public void onClick(View arg0) {
 				GV.player.moveVertical(-1);
+				if (GV.activeActivity instanceof LuarActivity) {
+					((LuarActivity)GV.activeActivity).moveMonsters();
+				}
 			}
 		});
 	}

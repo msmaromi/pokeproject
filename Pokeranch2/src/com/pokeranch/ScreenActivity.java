@@ -7,6 +7,7 @@ import com.example.menugan.Monster;
 import com.pokeranch.maps.CityActivity;
 import com.pokeranch.maps.CombinatoriumActivity;
 import com.pokeranch.maps.HomeActivity;
+import com.pokeranch.maps.LuarActivity;
 import com.pokeranch.maps.NavigationButton;
 import com.pokeranch.maps.StadiumActivity;
 import com.pokeranch.maps.StoreActivity;
@@ -98,6 +99,12 @@ public class ScreenActivity extends Activity {
 		} else if (id == "city-stadium") {
 			i = new Intent(getApplicationContext(), CityActivity.class);
 			GV.player.setPosition(7, 16);
+		} else if (id == "luar") {
+			i = new Intent(getApplicationContext(), LuarActivity.class);
+			GV.player.setPosition(1, 6);
+		} else if (id == "city-luar") {
+			i = new Intent(getApplicationContext(), CityActivity.class);
+			GV.player.setPosition(10, 6);
 		}
 		startActivity(i);
 		finish();
