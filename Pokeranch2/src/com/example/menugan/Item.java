@@ -45,4 +45,9 @@ public class Item {
   public void execute(Monster m) {
     
   }
+  
+  public void execute(Player p) {
+	    
+  }
+  
 }

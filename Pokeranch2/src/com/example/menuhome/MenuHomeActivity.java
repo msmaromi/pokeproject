@@ -3,7 +3,9 @@ package com.example.menuhome;
 import com.example.drivermenu.DriverActivity;
 import com.example.menugan.Player;
 //import com.example.menugan.R;
+import com.pokeranch.GV;
 import com.pokeranch.R;
+import com.pokeranch.maps.HomeActivity;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -20,7 +22,7 @@ public class MenuHomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		
-		playerHome = DriverActivity.playerDriver;
+		playerHome = GV.player;
 		
 	}
 
@@ -38,12 +40,12 @@ public class MenuHomeActivity extends Activity {
 		
 		//waktu jadi pagi 6.00 
 		
-		DriverActivity.playerDriver = playerHome;
+		GV.player = playerHome;
 	}//end klik
 
 	public void klikBackFromHome(View v){
-		DriverActivity.playerDriver = playerHome;
-		Intent i = new Intent(getApplicationContext(),DriverActivity.class);
+		GV.player = playerHome;
+		Intent i = new Intent(getApplicationContext(),HomeActivity.class);
 		startActivity(i);
 	}
 	

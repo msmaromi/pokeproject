@@ -16,6 +16,7 @@
         
         <activity
             android:name="com.example.menugan.MenuCoy"
+            android:noHistory="true"
             android:label="Menu Utama" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN5" />
@@ -25,6 +26,7 @@
         </activity>
         <activity
             android:name="com.example.menustore.MainActivityMenuStore"
+            android:noHistory="true"
             android:label="Store" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN3" />
@@ -35,6 +37,7 @@
         <activity
             android:name="com.example.menucombinatorium.MenuCombinatorium"
             android:label="Combinatorium"
+            android:noHistory="true"
             android:parentActivityName="android.app.ListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN1" />
@@ -43,16 +46,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.drivermenu.DriverActivity"
+            android:name="com.example.drivermenu.DriverActivity"            
             android:label="Driver Menu" >
             <intent-filter>
-                <action android:name="android.intent.action.DRIVERMENU" />
+                <action android:name="android.intent.action.MAIN1" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+        <activity            
             android:name="com.example.menuhome.MenuHomeActivity"
+            android:noHistory="true"
             android:label="Menu Home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN6" />
@@ -62,6 +66,7 @@
         </activity>
         <activity
             android:name="com.pokeranch.GV"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,6 +75,7 @@
         </activity>
         <activity
             android:name="com.pokeranch.maps.CityActivity"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.CITY" />
@@ -78,6 +84,7 @@
         </activity>
         <activity
             android:name="com.pokeranch.maps.HomeActivity"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.HOME" />
@@ -86,6 +93,7 @@
         </activity>
         <activity
             android:name="com.pokeranch.maps.StoreActivity"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.STORE" />
@@ -94,6 +102,7 @@
         </activity>
         <activity
             android:name="com.pokeranch.maps.StadiumActivity"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.STADIUM" />
@@ -102,6 +111,7 @@
         </activity>
         <activity
             android:name="com.pokeranch.maps.CombinatoriumActivity"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.COMBINATORIUM" />
@@ -119,9 +129,10 @@
         
         <activity
             android:name="com.pokeranch.Cover"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN2" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

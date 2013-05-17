@@ -2,7 +2,14 @@ package com.example.menugan;
 
 import com.example.drivermenu.DriverActivity;
 
+import com.pokeranch.GV;
 import com.pokeranch.R;
+import com.pokeranch.maps.CityActivity;
+import com.pokeranch.maps.CombinatoriumActivity;
+import com.pokeranch.maps.HomeActivity;
+import com.pokeranch.maps.StadiumActivity;
+import com.pokeranch.maps.StoreActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -67,30 +74,30 @@ public class MenuCoy extends Activity {
 									"Species : Ses \nElemen : Tanah \n",
 								};
 	
-	Integer[] list_image = 	{R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,
-							R.drawable.ic_launcher,	
+	Integer[] list_image = 	{R.drawable.monster_yi,
+							R.drawable.monster_er,
+							R.drawable.monster_san,
+							R.drawable.monster_shi,
+							R.drawable.monster_wu,
+							R.drawable.monster_liu,
+							R.drawable.monster_one,
+							R.drawable.monster_two,
+							R.drawable.monster_three,
+							R.drawable.monster_four,
+							R.drawable.monster_five,
+							R.drawable.monster_six,
+							R.drawable.monster_uno,
+							R.drawable.monster_dos,
+							R.drawable.monster_tres,
+							R.drawable.monster_cuatro,
+							R.drawable.monster_cinco,
+							R.drawable.monster_seis,
+							R.drawable.monster_een,
+							R.drawable.monster_twee,
+							R.drawable.monster_drie,
+							R.drawable.monster_vier,
+							R.drawable.monster_vyf,
+							R.drawable.monster_ses,	
 							};
 
 	
@@ -98,7 +105,7 @@ public class MenuCoy extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        playerDiMenu = new Player();
-        playerDiMenu = DriverActivity.playerDriver;
+        playerDiMenu = GV.player;
 //        playerDiMenu = this.getIntent().getParcelableExtra("player");
         
 //        int duitPlayer2 = this.getIntent().getIntExtra("duit", playerDiMenu.getUang());
@@ -115,9 +122,25 @@ public class MenuCoy extends Activity {
     }
     
     public void klikBackToGame(View V){    	
-    	Intent i = new Intent(getApplicationContext(),DriverActivity.class);    	
-//    	i.putExtra("duit", playerDiMenu.getUang());
-    	startActivity(i);
+    	String dari = this.getIntent().getStringExtra("posisiSebelum");
+    	
+    	if(dari.equals("home")){
+    		Intent i = new Intent(getApplicationContext(),HomeActivity.class);    	
+        	startActivity(i);
+    	}else if(dari.equals("store")){
+    		Intent i = new Intent(getApplicationContext(),StoreActivity.class);    	
+        	startActivity(i);
+    	}else if(dari.equals("combinatorium")){
+    		Intent i = new Intent(getApplicationContext(),CombinatoriumActivity.class);    	
+        	startActivity(i);    		
+    	}else if(dari.equals("stadium")){
+    		Intent i = new Intent(getApplicationContext(),StadiumActivity.class);    	
+        	startActivity(i);
+    	}else if(dari.equals("city")){
+    		Intent i = new Intent(getApplicationContext(),CityActivity.class);    	
+        	startActivity(i);
+    	}
+    	
     }
     
     public void klikItem(View v){
@@ -211,7 +234,7 @@ public class MenuCoy extends Activity {
 						public void onClick(View arg0) {
 							// TODO Auto-generated method stub
 							playerDiMenu.defaultMonster = playerDiMenu.listMonster.get(iterasi);
-							DriverActivity.playerDriver = playerDiMenu;
+							GV.player = playerDiMenu;
 						}
 					});
 					
@@ -224,7 +247,7 @@ public class MenuCoy extends Activity {
 							// TODO Auto-generated method stub
 							playerDiMenu.delMonster(playerDiMenu.listMonster.get(iterasi));
 							playerDiMenu.defaultMonster=null;
-							DriverActivity.playerDriver = playerDiMenu;
+							GV.player = playerDiMenu;
 						}
 					});
 					
